@@ -55,3 +55,21 @@ JOIN departments AS d #join with inner join to the table the departments table r
 ON d.dept_no = dm.dept_no #we are using column in common (dept_no) to connect the two tables
 WHERE dm.to_date > curdate() AND e.gender = 'F' #Set condition to make sure we are only getting back current managers that are female
 ORDER BY d.dept_name; #order results to match order shown in exercises - can reference column name using original name or aliases
+
+# Find all the current employees with the same hire date as employee 101010 using a sub-query.
+
+# Create subquery first
+SELECT hire_date
+FROM employees
+WHERE emp_no = '101010';
+
+# Now use subquery as where clause in final query
+SELECT *
+FROM employees
+WHERE hire_date = (
+	SELECT hire_date
+	FROM employees
+	WHERE emp_no = '101010')
+AND to_date > CURDATE();
+# Need to join another table to get to_date to ensure current employee
+# Also need to figure out why subquery is returning 0 rows
