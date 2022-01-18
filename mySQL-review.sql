@@ -58,18 +58,23 @@ ORDER BY d.dept_name; #order results to match order shown in exercises - can ref
 
 # Find all the current employees with the same hire date as employee 101010 using a sub-query.
 
-# Create subquery first
+# Create subqueries first
 SELECT hire_date
 FROM employees
 WHERE emp_no = '101010';
 
-# Now use subquery as where clause in final query
+SELECT emp_no
+FROM dept_emp
+WHERE to_date > curdate();
+
+# Now use subqueries as where clause in final query
 SELECT *
 FROM employees
 WHERE hire_date = (
 	SELECT hire_date
 	FROM employees
 	WHERE emp_no = '101010')
-AND to_date > CURDATE();
-# Need to join another table to get to_date to ensure current employee
-# Also need to figure out why subquery is returning 0 rows
+AND emp_no IN (
+	SELECT emp_no
+	FROM dept_emp
+	WHERE to_date > CURDATE());
