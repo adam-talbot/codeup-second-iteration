@@ -78,3 +78,25 @@ AND emp_no IN (
 	SELECT emp_no
 	FROM dept_emp
 	WHERE to_date > CURDATE());
+	
+	
+### Cognizant Tekstac Problems ###
+
+-- CREATE TABLE IF NOT EXISTS department (
+--     department_id INT,
+--     department_name VARCHAR(30),
+--     department_block_number INT,
+--     PRIMARY KEY (department_id)
+-- );
+    
+
+INSERT INTO department(department_id, department_name, department_block_number)
+VALUES
+    (1, 'CSE', 3),
+    (2, 'IT', 3),
+    (3, 'SE', 3);
+
+SELECT department_name
+FROM department
+WHERE department_block_number = 3
+ORDER BY department_name;
