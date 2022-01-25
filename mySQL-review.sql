@@ -167,3 +167,8 @@ ORDER BY HOTEL_INFO DESC;
 In python, you could loop through and create lists of all users and hotels and then if the hotel was in the list, remove them or add all others
 to another list and then filter by that final list, not sure how to do it in SQL */
 
+SELECT order_date, SUM(order_amount) AS TOTAL_SALE
+FROM orders
+GROUP BY order_date
+ORDER BY order_date;
+
