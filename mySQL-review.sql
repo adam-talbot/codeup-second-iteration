@@ -167,6 +167,19 @@ ORDER BY HOTEL_INFO DESC;
 In python, you could loop through and create lists of all users and hotels and then if the hotel was in the list, remove them or add all others
 to another list and then filter by that final list, not sure how to do it in SQL */
 
+SELECT NAME, ADDRESS
+FROM USERS
+WHERE USER_ID NOT IN (
+    SELECT USER_ID
+    FROM BOOKINGDETAILS
+    WHERE name = 'HDFC')
+AND
+    USER_ID IN (
+    SELECT USER_ID
+    FROM BOOKINGDETAILS
+    )
+ORDER BY 1;
+
 SELECT order_date, SUM(order_amount) AS TOTAL_SALE
 FROM orders
 GROUP BY order_date
