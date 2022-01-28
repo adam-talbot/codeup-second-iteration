@@ -194,3 +194,10 @@ WHERE hotel_id NOT IN
     FROM orders
     WHERE order_date LIKE '2019-05%')
 ORDER BY 1;
+
+SELECT hotel_id, hotel_name, COUNT(*) AS NO_OF_ORDERS
+FROM orders
+JOIN hotel_details USING(hotel_id)
+GROUP BY hotel_id
+HAVING NO_OF_ORDERS > 5
+ORDER BY 1;
