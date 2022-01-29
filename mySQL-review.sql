@@ -201,3 +201,9 @@ JOIN hotel_details USING(hotel_id)
 GROUP BY hotel_id
 HAVING NO_OF_ORDERS > 5
 ORDER BY 1;
+
+SELECT DISTINCT owner_id, owner_name, address, phone_no
+FROM owners
+JOIN cars USING(owner_id)
+WHERE car_name LIKE 'Maruthi%'
+ORDER BY 1;
