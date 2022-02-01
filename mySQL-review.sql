@@ -207,3 +207,20 @@ FROM owners
 JOIN cars USING(owner_id)
 WHERE car_name LIKE 'Maruthi%'
 ORDER BY 1;
+
+SELECT car_id, car_name, car_type
+FROM cars
+WHERE car_id NOT IN
+    (SELECT DISTINCT car_id
+    FROM rentals)
+ORDER BY 1;
+
+SELECT MAX(tour_count.tours) 
+FROM 
+( 
+    SELECT
+        ( SELECT COUNT(*) AS num 
+        FROM COUNTRIES c 
+        WHERE c.MIN_SIZE <= f.FAMILY_SIZE ) AS tours 
+FROM FAMILIES f ) 
+AS tour_count
