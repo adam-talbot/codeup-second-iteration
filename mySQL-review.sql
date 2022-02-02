@@ -215,6 +215,7 @@ WHERE car_id NOT IN
     FROM rentals)
 ORDER BY 1;
 
+-- Not sure how this works, didn't submit it since it wasn't my code and I couldn't even decipher it fully
 SELECT MAX(tour_count.tours) 
 FROM 
 ( 
@@ -224,3 +225,7 @@ FROM
         WHERE c.MIN_SIZE <= f.FAMILY_SIZE ) AS tours 
 FROM FAMILIES f ) 
 AS tour_count
+
+SELECT CONCAT(customer_id, ' mail id is ', email_id) AS CUSTOMER_MAIL_INFO
+FROM customers
+ORDER BY 1;
