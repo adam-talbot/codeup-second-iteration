@@ -229,3 +229,41 @@ AS tour_count
 SELECT CONCAT(customer_id, ' mail id is ', email_id) AS CUSTOMER_MAIL_INFO
 FROM customers
 ORDER BY 1;
+
+SELECT order_id, customer_name, hotel_name, order_amount
+FROM orders
+JOIN customers USING(customer_id)
+JOIN hotel_details USING(hotel_id)
+ORDER BY 1;
+
+-- Not sure how these joins with commas work, need to figure it out
+SELECT b.bus_no, b.bus_name
+FROM buses as b, schedule as s1, schedule as s2
+WHERE b.bus_no = s1.bus_no AND s1.source = s2.destination
+    AND s2.source = s1.destination AND s1.bus_no != s2.bus_no
+ORDER BY 1;
+
+-- SELECT b.bus_no, b.bus_name
+-- FROM buses as b 
+-- JOIN schedule as s1 USING(bus_no)
+-- JOIN schedule as s2 USING(bus_no)
+-- WHERE b.bus_no = s1.bus_no
+--     AND s1.source = s2.destination
+--     AND s2.source = s1.destination 
+--     AND s1.bus_no != s2.bus_no
+-- ORDER BY 1;
+
+SELECT user_id, count(bd_id) as no_of_times
+FROM bookingdetails
+GROUP BY user_id
+ORDER BY 1;
+
+SELECT car_id, count(rental_id)
+FROM rentals
+GROUP BY car_id
+ORDER BY 1;
+
+SELECT CONCAT(owner_name, owner_id) AS USERNAME, 
+        CONCAT(SUBSTR(owner_name, 1, 3), owner_id) AS PASSWORD
+FROM owners
+ORDER BY 1;
