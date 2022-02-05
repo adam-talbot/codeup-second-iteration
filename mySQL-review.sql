@@ -267,3 +267,21 @@ SELECT CONCAT(owner_name, owner_id) AS USERNAME,
         CONCAT(SUBSTR(owner_name, 1, 3), owner_id) AS PASSWORD
 FROM owners
 ORDER BY 1;
+
+CREATE TABLE owners(
+    owner_id VARCHAR(10),
+    owner_name VARCHAR(20),
+    address VARCHAR(20),
+    phone_no BIGINT,
+    email_id VARCHAR(20),
+    PRIMARY KEY (owner_id)
+);
+
+ALTER TABLE cars
+ADD COLUMN car_regno VARCHAR(10);
+
+ALTER TABLE customers
+MODIFY customer_id INT;
+
+ALTER TABLE hotel_details
+CHANGE rating hotel_rating INT;
