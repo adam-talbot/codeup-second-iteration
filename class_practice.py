@@ -3,8 +3,7 @@ import random, csv
 class magic8ball:
 
     # add the init function
-    def __init__(self, name):
-        self.__name = name
+    def __init__(self):
         self.__mQuestions = []
         self.__response_list = [
             'Yes, absolutely',
@@ -18,7 +17,7 @@ class magic8ball:
             'Yes, that will happen tomorrow',
             'You were destined for it'
         ]
-        self.__welcome(self.__name)
+        self.__welcome()
         self.__start_game()
         
     
@@ -36,8 +35,9 @@ class magic8ball:
                 # self.__write_questions()
             
     # create private method to welcome user
-    def __welcome(self, name):
-        print(f'Welcome, {name}!! Thanks for playing. Press enter when done.')
+    def __welcome(self):
+        name = input('Enter your name to begin the game: ')
+        print(f'Welcome, {name}!! Thanks for playing. Press enter without entering a question when you are done playing.')
         
     # # create a private method to write to a csv file
     # def __write_questions(self):
